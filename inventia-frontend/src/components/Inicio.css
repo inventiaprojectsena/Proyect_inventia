@@ -1,0 +1,289 @@
+/* ===========================
+   Inicio.css - Inventia
+   =========================== */
+
+.inventia-root {
+  min-height: 100vh;
+  background: #0a0a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Orbes de fondo animados */
+.inventia-root::before,
+.inventia-root::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.inventia-root::before {
+  width: 520px;
+  height: 520px;
+  background: #4f6ef7;
+  top: -120px;
+  left: -100px;
+  animation: driftA 10s ease-in-out infinite alternate;
+}
+
+.inventia-root::after {
+  width: 400px;
+  height: 400px;
+  background: #a259f7;
+  bottom: -80px;
+  right: -80px;
+  animation: driftB 12s ease-in-out infinite alternate;
+}
+
+@keyframes driftA {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, 40px) scale(1.12); }
+}
+
+@keyframes driftB {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-50px, -30px) scale(1.1); }
+}
+
+/* Tarjeta principal */
+.inv-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 60px 56px 52px;
+  max-width: 560px;
+  width: 90%;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(79, 110, 247, 0.12);
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(.22, 1, .36, 1),
+              transform 0.8s cubic-bezier(.22, 1, .36, 1);
+}
+
+.inv-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Badge / chip de estado */
+.inv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(79, 110, 247, 0.15);
+  border: 1px solid rgba(79, 110, 247, 0.35);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8ba4ff;
+  font-weight: 500;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s 0.2s ease, transform 0.6s 0.2s ease;
+}
+
+.inv-card.visible .inv-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.inv-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4f6ef7;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* Título */
+.inv-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #f0f0f8;
+  margin: 0 0 16px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s 0.3s ease, transform 0.6s 0.3s ease;
+}
+
+.inv-card.visible .inv-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.inv-title span {
+  background: linear-gradient(90deg, #4f6ef7, #a259f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtítulo */
+.inv-subtitle {
+  font-size: 0.97rem;
+  color: rgba(200, 200, 220, 0.65);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s 0.4s ease, transform 0.6s 0.4s ease;
+}
+
+.inv-card.visible .inv-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Divisor */
+.inv-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 0 0 28px;
+  opacity: 0;
+  transition: opacity 0.5s 0.45s ease;
+}
+
+.inv-card.visible .inv-divider {
+  opacity: 1;
+}
+
+/* Lista de features */
+.inv-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.inv-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(220, 220, 240, 0.8);
+  font-size: 0.92rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.inv-feature:hover {
+  background: rgba(79, 110, 247, 0.08);
+  border-color: rgba(79, 110, 247, 0.2);
+  color: #f0f0f8;
+}
+
+.inv-card.visible .inv-feature:nth-child(1) {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s 0.5s ease, transform 0.5s 0.5s ease,
+              background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.inv-card.visible .inv-feature:nth-child(2) {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s 0.62s ease, transform 0.5s 0.62s ease,
+              background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.inv-card.visible .inv-feature:nth-child(3) {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s 0.74s ease, transform 0.5s 0.74s ease,
+              background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.inv-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.inv-icon-blue   { background: rgba(79, 110, 247, 0.18); }
+.inv-icon-purple { background: rgba(162, 89, 247, 0.18); }
+.inv-icon-teal   { background: rgba(0, 210, 180, 0.15); }
+
+/* Botón CTA */
+.inv-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c4df7 100%);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(79, 110, 247, 0.35);
+  opacity: 0;
+  transition: opacity 0.6s 0.85s ease,
+              transform 0.18s ease,
+              box-shadow 0.18s ease;
+}
+
+.inv-card.visible .inv-btn {
+  opacity: 1;
+}
+
+.inv-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(79, 110, 247, 0.5);
+}
+
+.inv-btn:active {
+  transform: translateY(0);
+}
+
+.inv-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent);
+}
+
+/* Nota de pie */
+.inv-footer-note {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.75rem;
+  color: rgba(150, 150, 170, 0.45);
+  letter-spacing: 0.04em;
+}

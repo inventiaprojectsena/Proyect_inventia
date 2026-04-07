@@ -1,0 +1,97 @@
+/* ===========================
+   Header.css - Inventia
+   =========================== */
+
+.inv-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 56px;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex; align-items: center;
+  padding: 0 24px;
+  justify-content: space-between;
+}
+
+.inv-header-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.inv-header-logo {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: linear-gradient(135deg, #4f6ef7, #a259f7);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; color: #fff;
+}
+.inv-header-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem; font-weight: 700; color: #f0f0f8; letter-spacing: 0.02em;
+}
+
+.inv-header-right {
+  display: flex; align-items: center; gap: 10px;
+}
+
+/* Badge de rol */
+.inv-header-role-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 11px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.role-admin {
+  background: rgba(167,139,250,0.15);
+  border: 1px solid rgba(167,139,250,0.28);
+  color: #a78bfa;
+}
+.role-user {
+  background: rgba(96,165,250,0.12);
+  border: 1px solid rgba(96,165,250,0.25);
+  color: #60a5fa;
+}
+
+/* Nombre del usuario */
+.inv-header-username {
+  font-size: 0.83rem; font-weight: 500;
+  color: rgba(200,200,225,0.7);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Botón cerrar sesión */
+.inv-header-logout {
+  padding: 6px 14px; border-radius: 9px;
+  background: rgba(239,68,68,0.09);
+  border: 1px solid rgba(239,68,68,0.2);
+  color: rgba(248,113,113,0.8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.inv-header-logout:hover {
+  background: rgba(239,68,68,0.18);
+  border-color: rgba(239,68,68,0.35);
+  color: #f87171;
+}
+
+/* Badge v1.0 */
+.inv-header-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(79,110,247,0.12);
+  border: 1px solid rgba(79,110,247,0.25);
+  border-radius: 100px; padding: 4px 12px;
+  font-size: 0.7rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #8ba4ff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+}
+.inv-header-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #4f6ef7;
+  animation: headerPulse 2s infinite;
+}
+@keyframes headerPulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.4; transform:scale(1.5); }
+}

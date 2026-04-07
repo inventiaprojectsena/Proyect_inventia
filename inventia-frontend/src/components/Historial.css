@@ -1,0 +1,278 @@
+/* ===========================
+   Historial.css - Inventia
+   =========================== */
+
+.hist-root {
+  min-height: calc(100vh - 56px);
+  background: #0a0a0f;
+  padding: 32px 28px;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.hist-root::before {
+  content: '';
+  position: absolute;
+  width: 450px; height: 450px;
+  background: #a259f7;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.07;
+  top: -120px; right: -80px;
+  pointer-events: none;
+}
+
+/* Encabezado */
+.hist-header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  opacity: 0; transform: translateY(12px);
+  animation: fadeUp 0.6s 0.1s ease forwards;
+}
+.hist-header-left h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem; font-weight: 800;
+  color: #f0f0f8; margin: 0 0 4px;
+}
+.hist-header-left p {
+  font-size: 0.85rem;
+  color: rgba(180,180,200,0.5); margin: 0;
+}
+.hist-btn-limpiar {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 16px; border-radius: 10px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.18);
+  color: rgba(248,113,113,0.7);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 500; cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.hist-btn-limpiar:hover {
+  background: rgba(239,68,68,0.16);
+  border-color: rgba(239,68,68,0.35);
+  color: #f87171;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Métricas rápidas */
+.hist-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px; margin-bottom: 24px;
+}
+.hist-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 18px 20px;
+  opacity: 0; transform: translateY(14px);
+  animation: fadeUp 0.5s ease forwards;
+}
+.hist-stat:nth-child(1) { animation-delay: 0.15s; }
+.hist-stat:nth-child(2) { animation-delay: 0.22s; }
+.hist-stat:nth-child(3) { animation-delay: 0.29s; }
+.hist-stat:nth-child(4) { animation-delay: 0.36s; }
+
+.hist-stat-icon {
+  font-size: 18px; margin-bottom: 10px; display: block;
+}
+.hist-stat-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.7rem; font-weight: 800;
+  color: #f0f0f8; line-height: 1; margin-bottom: 4px;
+}
+.hist-stat-label {
+  font-size: 0.76rem; color: rgba(160,160,185,0.5);
+}
+
+/* Filtros */
+.hist-filters {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.5s 0.4s ease forwards;
+}
+.hist-search-wrap {
+  position: relative; flex: 1; min-width: 200px;
+}
+.hist-search-icon {
+  position: absolute; left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: rgba(140,140,170,0.5); pointer-events: none;
+  font-size: 12px;
+}
+.hist-search {
+  width: 100%; padding: 9px 14px 9px 34px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  color: #e0e0f0; font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+  outline: none; transition: border-color 0.18s, background 0.18s;
+}
+.hist-search::placeholder { color: rgba(140,140,170,0.4); }
+.hist-search:focus {
+  border-color: rgba(79,110,247,0.4);
+  background: rgba(79,110,247,0.05);
+}
+.hist-select {
+  padding: 9px 32px 9px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  color: rgba(200,200,225,0.8);
+  font-family: 'DM Sans', sans-serif; font-size: 0.83rem;
+  outline: none; cursor: pointer;
+  transition: border-color 0.18s;
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(160,160,190,0.5)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.hist-select:focus { border-color: rgba(79,110,247,0.4); }
+.hist-select option { background: #12121a; color: #e0e0f0; }
+
+/* Línea de tiempo */
+.hist-timeline {
+  position: relative;
+  opacity: 0; animation: fadeUp 0.6s 0.45s ease forwards;
+}
+.hist-timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg,
+    rgba(79,110,247,0.4) 0%,
+    rgba(162,89,247,0.2) 60%,
+    transparent 100%);
+}
+
+/* Entrada del historial */
+.hist-entry {
+  display: flex; gap: 16px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.hist-entry-dot {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0; position: relative; z-index: 1;
+  border: 2px solid transparent;
+}
+.dot-creado   { background: rgba(34,197,94,0.15);  border-color: rgba(34,197,94,0.3); }
+.dot-editado  { background: rgba(79,110,247,0.15); border-color: rgba(79,110,247,0.3); }
+.dot-eliminado{ background: rgba(239,68,68,0.15);  border-color: rgba(239,68,68,0.3); }
+
+.hist-entry-body {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 13px; padding: 14px 18px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.hist-entry-body:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.11);
+}
+
+.hist-entry-top {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 8px;
+  flex-wrap: wrap; gap: 8px;
+}
+.hist-entry-title {
+  display: flex; align-items: center; gap: 9px;
+}
+.hist-entry-nombre {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.92rem; font-weight: 700; color: #e8e8f8;
+}
+
+/* Badge de acción */
+.hist-accion-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px; border-radius: 100px;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+}
+.accion-creado    { background: rgba(34,197,94,0.13);  color: #4ade80; border: 1px solid rgba(34,197,94,0.22); }
+.accion-editado   { background: rgba(79,110,247,0.13); color: #818cf8; border: 1px solid rgba(79,110,247,0.22); }
+.accion-eliminado { background: rgba(239,68,68,0.13);  color: #f87171; border: 1px solid rgba(239,68,68,0.22); }
+
+.hist-entry-fecha {
+  font-size: 0.75rem; color: rgba(140,140,170,0.5);
+  white-space: nowrap;
+}
+
+.hist-entry-meta {
+  display: flex; flex-wrap: wrap; gap: 16px;
+}
+.hist-meta-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; color: rgba(175,175,200,0.6);
+}
+.hist-meta-key {
+  font-size: 0.72rem; color: rgba(130,130,160,0.45);
+  font-weight: 500;
+}
+
+/* Usuario */
+.hist-entry-user {
+  display: flex; align-items: center; gap: 6px;
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.hist-user-avatar {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; flex-shrink: 0;
+}
+.avatar-admin  { background: rgba(167,139,250,0.2); color: #a78bfa; }
+.avatar-usuario{ background: rgba(96,165,250,0.2);  color: #60a5fa; }
+.hist-user-name {
+  font-size: 0.78rem; color: rgba(170,170,200,0.6); font-weight: 500;
+}
+.hist-user-rol {
+  font-size: 0.7rem; color: rgba(130,130,160,0.4);
+}
+
+/* Estado vacío */
+.hist-empty {
+  text-align: center; padding: 60px 20px;
+  color: rgba(140,140,170,0.4);
+}
+.hist-empty-icon { font-size: 2.5rem; margin-bottom: 14px; display: block; }
+.hist-empty-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  color: rgba(180,180,210,0.4); margin-bottom: 6px;
+}
+.hist-empty-sub { font-size: 0.82rem; }
+
+/* Paginación simple */
+.hist-pagination {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin-top: 24px;
+}
+.hist-page-btn {
+  padding: 7px 14px; border-radius: 9px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(190,190,220,0.7);
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+  cursor: pointer; transition: background 0.15s, border-color 0.15s;
+}
+.hist-page-btn:hover:not(:disabled) {
+  background: rgba(79,110,247,0.1);
+  border-color: rgba(79,110,247,0.25);
+  color: #8ba4ff;
+}
+.hist-page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.hist-page-info {
+  font-size: 0.8rem; color: rgba(150,150,180,0.5);
+  padding: 0 6px;
+}

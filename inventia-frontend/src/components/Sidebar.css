@@ -1,0 +1,125 @@
+/* ===========================
+   Sidebar.css - Inventia
+   =========================== */
+
+.inv-sidebar {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  background: rgba(10, 10, 15, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 90;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Sección label */
+.inv-sidebar-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(150, 150, 170, 0.45);
+  font-weight: 500;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+/* Ítem de navegación */
+.inv-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgba(200, 200, 220, 0.6);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: background 0.18s ease, color 0.18s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.inv-nav-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f0f0f8;
+  text-decoration: none;
+}
+
+.inv-nav-item.active {
+  background: rgba(79, 110, 247, 0.12);
+  border-color: rgba(79, 110, 247, 0.22);
+  color: #a0b4ff;
+  font-weight: 500;
+}
+
+.inv-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(180deg, #4f6ef7, #a259f7);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Ícono del nav item */
+.inv-nav-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
+  transition: background 0.18s ease;
+}
+
+.inv-nav-item.active .inv-nav-icon {
+  background: rgba(79, 110, 247, 0.2);
+}
+
+/* Divisor */
+.inv-sidebar-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 12px 0;
+}
+
+/* Footer del sidebar */
+.inv-sidebar-footer {
+  margin-top: auto;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(79, 110, 247, 0.06);
+  border: 1px solid rgba(79, 110, 247, 0.12);
+}
+
+.inv-sidebar-footer-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(150, 150, 180, 0.5);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.inv-sidebar-footer-text span {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(160, 180, 255, 0.6);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
